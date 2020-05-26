@@ -1,6 +1,8 @@
 package kata.kata;
 
 
+import java.util.stream.Stream;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -25,14 +27,23 @@ import lombok.Setter;
 @Setter
 public class Discount {
 	
+	@NonNull
 	private Product product;
+	private final static float simplePrice = 0.65f;
+	private final static float discountPrice = 1f;
 	
-	public Discount checkDiscount(@NonNull Discount discount){
-		if(discount.getProduct().getNumberOfArticles() != 1 ){
-			return applyDiscount(discount);
-		}
-		discount.getProduct().setPrice(0.65f);
-		return discount;
+	 private final DiscountInterface discountInterface  = (discount) -> {
+		 if(discount.getProduct().getNumberOfArticles() != 1 ){
+				return applyDiscount(discount);
+			}
+			discount.getProduct().setPrice(simplePrice);
+			return discount;
+	 };
+	
+	
+	public Discount verifyDiscount(@NonNull Discount discount){
+
+		return discountInterface.checkDiscount(discount);
 		
 	}
 	
@@ -51,7 +62,7 @@ public class Discount {
 		return discount;
 	}
 	public Product discountPriceBuyTwoGetOneFree(@NonNull Product product){
-		float price = 0.65f * product.getNumberOfArticles();
+		float price = simplePrice * product.getNumberOfArticles();
 		int canOfBeans = product.getNumberOfArticles() + product.getNumberOfArticles() / 2; 
 		product.setPrice(price);
 		product.setNumberOfArticles(canOfBeans);
@@ -60,22 +71,22 @@ public class Discount {
 		return product;
 	}
 	public Product  discountPriceThreeForADollar(@NonNull Product product){
-		float price = 1f;
+		float price = discountPrice * product.getNumberOfArticles();
 		product.setPrice(price);
 		
 		
 		return product;
 	} 
 	public Product  reducedPriceOrNumberOfArticles(@NonNull Product product){
-		float simpleprice = 0.65f;
-		float discountprice = 1f;
+		
 		if(product.getNumberOfArticles() % 3 == 1) {
-			product.setPrice(discountprice * (product.getNumberOfArticles() / 3) + simpleprice);
+			product.setPrice(discountPrice * (product.getNumberOfArticles() / 3) + simplePrice);
 		}
 		else {
-			product.setPrice(discountprice * (product.getNumberOfArticles() / 3) + simpleprice * (product.getNumberOfArticles() % 3) );
+			product.setPrice(discountPrice * (product.getNumberOfArticles() / 3) + simplePrice * (product.getNumberOfArticles() % 3) );
 			product.setNumberOfArticles( product.getNumberOfArticles() + 1);
 		}
 		return product;
 	} 
 }
+

@@ -1,17 +1,9 @@
 package kata.kata;
 
 import static org.junit.Assert.*;
-
-import org.junit.Before;
 import org.junit.Test;
 
 public class DiscountTest {
-	
-//	@Before
-//	public void setUp()
-//	{
-//		float simplePrice = 0.65f;
-//	}
 	private float simplePrice = 0.65f;
 	private float discountprice = 1f;
 	
@@ -25,7 +17,7 @@ public class DiscountTest {
 				build();
 		
 		//when
-		discount = discount.checkDiscount(discount);
+		discount = discount.verifyDiscount(discount);
 		//then
 		assertEquals(new Integer(1),product.getNumberOfArticles());
 		assertEquals(simplePrice * product.getNumberOfArticles(),discount.getProduct().getPrice(),0.0002);
@@ -40,7 +32,7 @@ public class DiscountTest {
 				build();
 		
 		//when
-		discount = discount.checkDiscount(discount);
+		discount = discount.verifyDiscount(discount);
 		//then
 		assertNotEquals(new Integer(1),product.getNumberOfArticles());
 		assertNotEquals(simplePrice* product.getNumberOfArticles(),discount.getProduct().getPrice(),0.00002);
@@ -74,7 +66,7 @@ public class DiscountTest {
 		//when
 		discount.setProduct(discount.discountPriceThreeForADollar(product));
 		//then
-		assertEquals(discountprice ,discount.getProduct().getPrice(),0.0002);
+		assertEquals(discountprice * 3,discount.getProduct().getPrice(),0.0002);
 		assertEquals(  new Integer(numberOfArticles)  ,discount.getProduct().getNumberOfArticles());
 		
 	}
