@@ -1,10 +1,13 @@
-package kata.kata;
+package kata;
 
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
+
 import org.junit.Test;
+
+import kata.Product;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -16,7 +19,7 @@ public class ProducTest {
 	 @Test
 	public void  shouldBeReturnFromToStringMethod(){ 
 		 // given
-		Product product = Product.builder().name("product A").numberOfArticles(1)
+		Product product = Product.builder().name("product A").numberOfArticles(1).price(0.65f)
 				.build();
 		// when
 		// then

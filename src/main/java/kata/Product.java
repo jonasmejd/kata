@@ -1,4 +1,4 @@
-package kata.kata;
+package kata;
 
 
 import lombok.*;
@@ -7,17 +7,24 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @EqualsAndHashCode
-@ToString(of="name")
+@ToString
 @Getter
 @Setter
 public class Product {
 	
 	@NonNull
 	private String name;
-
-	private float price;
+	
+	@NonNull
+	private Float price;
 
 	@NonNull
 	private Integer numberOfArticles;
+	
+	private Float pound;
+	
+	public Product discount(IDiscount iDiscount){
+		return iDiscount.applyDicount(this);
+	}
 
 }
