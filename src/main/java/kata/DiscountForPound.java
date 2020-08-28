@@ -1,15 +1,13 @@
 package kata;
 
 public class DiscountForPound {
-	
-	private final static float discountPrice = 1.99f;
-	
-	/*
+
+	/*priceDiscount
 	 * $1.99/pound 
 	 * @Param the product we want to apply a discount
 	 * */
 	IDiscount iDiscount = (product) -> {
-		Float price = discountPrice * product.getPound();
+		Float price = product.getDiscountPrice() * product.getPound();
 		product.setPrice(price);
 		return product;
 	};

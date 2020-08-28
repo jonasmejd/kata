@@ -13,7 +13,8 @@ public class DiscountReducedPriceOrNumberOfArticlesTest {
 	public void shouldApplyreducedPrice(){
 		// given
 		int numberOfArticles = 7;
-		Product product = Product.builder().name("Beans").numberOfArticles(numberOfArticles).price(simplePrice).build();
+		Product product = Product.builder().name("Beans").numberOfArticles(numberOfArticles).price(simplePrice).discountPrice(discountprice)
+				.build();
 		DiscountReducedPriceOrNumberOfArticles discount = new DiscountReducedPriceOrNumberOfArticles();
 
 		// when
@@ -27,7 +28,8 @@ public class DiscountReducedPriceOrNumberOfArticlesTest {
 	public void shouldApplyMoreNumberOfArticles(){
 		// given
 		int numberOfArticles = 17;
-		Product product = Product.builder().name("Beans").numberOfArticles(numberOfArticles).price(simplePrice).build();
+		Product product = Product.builder().name("Beans").numberOfArticles(numberOfArticles).price(simplePrice).discountPrice(discountprice)
+				.build();
 		DiscountReducedPriceOrNumberOfArticles discount = new DiscountReducedPriceOrNumberOfArticles();
 
 		// when

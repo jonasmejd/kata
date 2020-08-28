@@ -1,7 +1,6 @@
 package kata;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 public class DiscountForPoundTest {
@@ -14,7 +13,7 @@ public class DiscountForPoundTest {
 		//given
 		int numberOfArticles = 3; 
 		Float pound = 10f;
-		Product product =Product.builder().name("Beans").numberOfArticles(numberOfArticles).price(simplePrice).pound(pound)
+		Product product =Product.builder().name("Beans").numberOfArticles(numberOfArticles).price(simplePrice).pound(pound).discountPrice(discountprice)
 				.build();
 		DiscountForPound discount =  new DiscountForPound();
 		

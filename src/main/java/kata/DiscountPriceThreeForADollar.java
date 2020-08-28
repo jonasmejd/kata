@@ -1,7 +1,8 @@
 package kata;
 
 public class DiscountPriceThreeForADollar {
-	
+
+	//In this case the price is set at  1 $
 	private final static float discountPrice = 1f;
 	
 	/*

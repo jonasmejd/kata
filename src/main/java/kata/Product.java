@@ -22,6 +22,8 @@ public class Product {
 	private Integer numberOfArticles;
 	
 	private Float pound;
+
+	private Float discountPrice;
 	
 	public Product discount(IDiscount iDiscount){
 		return iDiscount.applyDicount(this);
