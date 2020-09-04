@@ -24,8 +24,9 @@ public class Kata {
 		product = product.discount(discountPriceBuyTwoGetOneFree.iDiscount);
         products.add(product);
         
-        Product product_1 = Product.builder().price(3.70f).name("java bean").numberOfArticles(8)
-        		.build(); DiscountPriceThreeForADollar discountPriceThreeForADollar = new DiscountPriceThreeForADollar();
+        Product product_1 = Product.builder().price(3f).name("java bean").numberOfArticles(8)
+        		.build(); 
+        DiscountPriceThreeForADollar discountPriceThreeForADollar = new DiscountPriceThreeForADollar();
         product_1 = product_1.discount(discountPriceThreeForADollar.iDiscount); 
         products.add(product_1);
        

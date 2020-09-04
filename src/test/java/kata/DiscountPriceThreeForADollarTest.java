@@ -13,7 +13,7 @@ public class DiscountPriceThreeForADollarTest {
 	@Test
 	public void shouldApplyDiscountPriceThreeForADollar(){
 		//given
-		int numberOfArticles = 3; 
+		int numberOfArticles = 8; 
 		Product product =Product.builder().name("Beans").numberOfArticles(numberOfArticles).price(simplePrice)
 				.build();
 		DiscountPriceThreeForADollar discount =  new DiscountPriceThreeForADollar();
@@ -21,7 +21,9 @@ public class DiscountPriceThreeForADollarTest {
 		//when
 		product = product.discount(discount.iDiscount);
 		//then
-		assertEquals(discountprice * numberOfArticles / 3,product.getPrice(),0.0002);
+		int numbre  = product.getNumberOfArticles() / 3;
+		Float  threeForADollar = discountprice * numbre;
+		assertEquals(threeForADollar + product.getNumberOfArticles() % 3 * simplePrice ,product.getPrice(),0.0002);
 		assertEquals(  new Integer(numberOfArticles)  ,product.getNumberOfArticles());
 		
 	}
